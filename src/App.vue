@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <test-header></test-header>
+    <!--
     <test-container></test-container>
-    <router-riew>
-    <router-view/>
     <test-player></test-player>
+    -->
   </div>
 </template>
 
 <script>
+import TestHeader from '@/components/TestHeader/TestHeader'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    TestHeader
+  }
 }
 </script>
 
@@ -20,7 +25,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
