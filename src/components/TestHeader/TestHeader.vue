@@ -26,7 +26,7 @@ export default {
   .test-header {
     position: relative;
     text-align: center;
-    height: 60px;
+    height: 70px;
     color: $color-theme;
     .title {
       display: inline-block;

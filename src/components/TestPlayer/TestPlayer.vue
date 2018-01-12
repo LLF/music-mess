@@ -1,0 +1,87 @@
+<template>
+  <div class="player-container">
+
+    <div class="player-controller">
+      <div class="player-controller-button player-controller-prev">
+        <i class="icon-previous"></i>
+      </div>
+      <div class="player-controller-button player-controller-play">
+        <i class="icon-play"></i>
+      </div>
+      <div class="player-controller-button player-controller-next">
+        <i class="icon-next"></i>
+      </div>
+    </div>
+
+    <div class="player-song-info">
+      <div class="player-song-avatar">
+      </div>
+      <div class="player-song-progress">
+        <div class="player-song-info-detail">
+          <div class="player-song-name"></div>
+          <div class="player-song-singer"></div>
+          <div class="player-song-timer"></div>
+        </div>
+        <div class="player-song-progress-bar">
+        </div>
+      </div>
+    </div>
+
+    <div class="player-user-opertion">
+      <div class="player-mode">
+        <i class="icon-player-mode"></i>
+      </div>
+      <div class="player-user-like">
+        <i class="icon-player-heart"></i>
+      </div>
+      <div class="player-volume">
+        <i class="icon-player-volume"></i>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      songCanPlay: false,
+      // Lyric:
+      currentTime: 0,
+      currentLyric: null,
+      currentLyricLine: 0,
+      showList: false
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+@import "~@/assets/scss/const.scss";
+
+  .player-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+    background: $color-background-player;
+    .player-controller {
+      display: flex;
+      align-items: center; 
+      .player-controller-button {
+        flex: 0 1 50px;
+        width: 100px;
+        height: 50px;
+      }
+      .player-controller-next .player-controller-prev {
+        font-size: 20px;
+        position: absolute;
+        top: 0;
+        left: 0; 
+      }
+    }
+  }
+</style>

@@ -3,20 +3,21 @@
 // Color constants
 $color-background           : #f0a2a2;
 $color-background-d         : rgba(0, 0, 0, 0.3);
+$color-background-player    : #ff8a8a;
 $color-highlight-background : #333;
 $color-dialog-background    : #e77a7a;
 $color-theme                : #44b673;
 $color-theme-d              : rgba(255, 205, 49, 0.5);
 $color-sub-theme            : #d93f30;
-$color-text                 : #fff;
-$color-text-d               : rgba(255, 255, 255, 0.3);
+$color-text                 : rgb(255, 255, 255);
+$color-text-d               : rgb(55, 167, 211);
 $color-text-l               : rgba(255, 255, 255, 0.5);
 $color-text-ll              : rgba(255, 255, 255, 0.8);
 
 // Font size
-$font-size-small-s  : 20px;
-$font-size-small    : 22px;
-$font-size-medium   : 24px;
-$font-size-medium-x : 26px;
+$font-size-small-s  : 12px;
+$font-size-small    : 15px;
+$font-size-medium   : 18px;
+$font-size-medium-x : 20px;
 $font-size-large    : 28px;
 $font-size-large-x  : 32px;

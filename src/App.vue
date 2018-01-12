@@ -1,20 +1,25 @@
 <template>
   <div id="app">
     <test-header></test-header>
+    <test-tab></test-tab>
     <!--
     <test-container></test-container>
-    <test-player></test-player>
     -->
+    <test-player></test-player>
   </div>
 </template>
 
 <script>
 import TestHeader from '@/components/TestHeader/TestHeader'
+import TestTab from '@/components/TestTab/TestTab'
+import TestPlayer from '@/components/TestPlayer/TestPlayer'
 
 export default {
   name: 'app',
   components: {
-    TestHeader
+    TestHeader,
+    TestTab,
+    TestPlayer
   }
 }
 </script>

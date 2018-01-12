@@ -13,6 +13,7 @@ const state = {
   playList: [],
   playMode: PLAY_MODE.SEQUENCE,
   isPlaying: false,
+  isShowing: false,
   song: {},
   songList: [],
   volume: 50,
