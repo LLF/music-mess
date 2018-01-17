@@ -1,42 +1,43 @@
 <template>
   <div class="player-container">
-
-    <div class="player-controller">
-      <div class="player-controller-button player-controller-prev">
-        <i class="icon-previous"></i>
-      </div>
-      <div class="player-controller-button player-controller-play">
-        <i class="icon-play"></i>
-      </div>
-      <div class="player-controller-button player-controller-next">
-        <i class="icon-next"></i>
-      </div>
-    </div>
-
-    <div class="player-song-info">
-      <div class="player-song-avatar">
-      </div>
-      <div class="player-song-progress">
-        <div class="player-song-info-detail">
-          <div class="player-song-name"></div>
-          <div class="player-song-singer"></div>
-          <div class="player-song-timer"></div>
+    <div class="player-mini">
+      <div class="player-controller">
+        <div class="player-controller-button player-controller-prev">
+          <i class="icon-previous"></i>
         </div>
-        <div class="player-song-progress-bar">
+        <div class="player-controller-button player-controller-play">
+          <i class="icon-play"></i>
+        </div>
+        <div class="player-controller-button player-controller-next">
+          <i class="icon-next"></i>
         </div>
       </div>
-    </div>
 
-    <div class="player-user-opertion">
-      <div class="player-mode">
-        <i class="icon-player-mode"></i>
+      <div class="player-song-info">
+        <div class="player-song-avatar">
+        </div>
+        <div class="player-song-progress">
+          <div class="player-song-info-detail">
+            <div class="player-song-name"></div>
+            <div class="player-song-timer"></div>
+          </div>
+          <div class="player-song-progress-bar">
+          </div>
+        </div>
       </div>
-      <div class="player-user-like">
-        <i class="icon-player-heart"></i>
+
+      <div class="player-user-opertion">
+        <div class="player-mode">
+          <i class="icon-player-mode"></i>
+        </div>
+        <div class="player-user-like">
+          <i class="icon-player-heart"></i>
+        </div>
+        <div class="player-volume">
+          <i class="icon-player-volume"></i>
+        </div>
       </div>
-      <div class="player-volume">
-        <i class="icon-player-volume"></i>
-      </div>
+
     </div>
   </div>
 </template>
@@ -68,20 +69,32 @@ export default {
     bottom: 0;
     left: 0;
     background: $color-background-player;
+    .player-mini {
+      margin-left: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .player-controller {
       display: flex;
       align-items: center; 
+      justify-content: center;
       .player-controller-button {
-        flex: 0 1 50px;
-        width: 100px;
+        flex: 0 1 70px;
+        width: 80px;
         height: 50px;
       }
-      .player-controller-next .player-controller-prev {
-        font-size: 20px;
-        position: absolute;
-        top: 0;
-        left: 0; 
+      .player-controller-next, .player-controller-prev {
+        font-size: 45px;
       }
+      .player-controller-play {
+        font-size: 45px;
+      }
+    }
+
+    .player-song-info {
+
     }
   }
 </style>
