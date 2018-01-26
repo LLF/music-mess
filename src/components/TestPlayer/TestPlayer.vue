@@ -18,10 +18,15 @@
         </div>
         <div class="player-song-progress">
           <div class="player-song-info-detail">
-            <div class="player-song-name"></div>
-            <div class="player-song-timer"></div>
+            <div class="player-song-info-basic">
+              <a class="player-song-name">aaaa</a>
+              -
+              <a class="player-song-singer">bbbb</a>
+            </div>
+            <span class="player-song-timer">04:00/05:00</span>
           </div>
           <div class="player-song-progress-bar">
+            <test-progress-bar></test-progress-bar>
           </div>
         </div>
       </div>
@@ -43,7 +48,12 @@
 </template>
 
 <script>
+import TestProgressBar from './TestProgressBar'
 export default {
+  components: {
+    TestProgressBar
+  },
+
   data () {
     return {
       songCanPlay: false,
@@ -94,7 +104,15 @@ export default {
     }
 
     .player-song-info {
+      .player-song-info-detail {
+        display: flex;
+        flex: 0 1 auto;
+        justify-content: space-between;
+      }
 
+      .player-song-progress-bar {
+        flex: 1;
+      }
     }
   }
 </style>
