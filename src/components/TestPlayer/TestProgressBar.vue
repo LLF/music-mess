@@ -12,9 +12,7 @@
       <div 
         ref="progressPoint" 
         class="player-progress-point-wrapper"
-        @mousedown="progressPointStart"
-        @mousemove="progressPointMove"
-        @mouseup="progressPointEnd"
+        @mousedown.prevent="progressPointStart"
       >
         <div class="player-progress-point"></div>
       </div>
@@ -23,35 +21,88 @@
 </template>
 
 <script>
+const MAX_VOL = 100
+const MIN_VOL = 0
+
 export default {
   data () {
     return {
-      startFlag: false,
-      startX: 0
+      isMoving: false,
+      startX: 0,
+      // From 0 ~ length of bar
+      pointPosition: 0
+
     }
   },
+  props: {
+    percent: {
+      type: Number,
+      default: 0,
+      validator (value) {
+        return MAX_VOL >= value && MIN_VOL <= value
+      }
+    },
+    bWidth: {
+      type: Number,
+      default: 0
+    },
+    bHeight: {
+      type: Number,
+      default: 0
+    }
+  },
+
+  computed: {
+    progressLength () {
+      return this.$refs.progressBar.clientWidth
+    },
+    progressLeft () {
+      return this.$refs.progressBar.getBoundingClientRect().left
+    },
+    barRect () {
+      return {
+        width: this.bWidth,
+        height: this.bHeight
+      }
+    }
+  },
+
   methods: {
     progressClick (event) {
-      let rectLeft = this.$refs.progressBar.getBoundingClientRect().left
-      let offsetWidth = event.pageX - rectLeft
+      let offsetWidth = event.pageX - this.progressLeft
+      if (offsetWidth > this.progressLength) offsetWidth = this.progressLength
+      if (offsetWidth < 0) offsetWidth = 0
+      this.pointPosition = offsetWidth
       this._movePoint(offsetWidth)
     },
 
     progressPointStart (event) {
-      this.startFlag = true
+      this.isMoving = true
       this.startX = event.pageX
+      window.addEventListener('mousemove', this.progressPointMove)
+      window.addEventListener('mouseup', this.progressPointEnd)
+      window.addEventListener('contextmenu', this.progressPointEnd)
     },
 
     progressPointMove (event) {
-      if (!this.startFlag) return
-      let offsetWidth = event.pageX - this.startX
-      let offset = Math.min(this.$refs.progressBar.clientWidth, Math.max(0, offsetWidth))
-      console.log(offsetWidth)
-      this._movePoint(offset)
+      if (!this.isMoving) return
+      let offsetWidth = event.pageX - this.startX + this.pointPosition
+      if (offsetWidth > this.progressLength) offsetWidth = this.progressLength
+      if (offsetWidth < 0) offsetWidth = 0
+      // let offset = offsetWidth + this.pointPosition
+      // let offset = Math.min(this.$refs.progressBar.clientWidth, Math.max(0, offsetWidth))
+      this._movePoint(offsetWidth)
     },
 
     progressPointEnd (event) {
-      this.startFlag = false
+      this.isMoving = false
+      let offsetWidth = event.pageX - this.progressLeft
+      if (offsetWidth > this.progressLength) offsetWidth = this.progressLength
+      if (offsetWidth < 0) offsetWidth = 0
+      this.pointPosition = offsetWidth
+      window.removeEventListener('mousemove', this.progressPointMove)
+      window.removeEventListener('mouseup', this.progressPointEnd)
+      window.removeEventListener('contextmenu', this.progressPointEnd)
     },
 
     _movePoint (width) {
