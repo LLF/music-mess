@@ -5,6 +5,7 @@
     <!--
     <test-container></test-container>
     -->
+    <router-view></router-view>
     <test-player></test-player>
   </div>
 </template>

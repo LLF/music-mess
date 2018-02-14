@@ -101,9 +101,8 @@ export default {
       volume: 0
     }
   },
-  
   watch: {
-    getPlayStatus(newVal) {
+    getPlayStatus (newVal) {
       console.log(newVal)
     }
   },
@@ -111,13 +110,12 @@ export default {
   computed: {
     ...mapGetters('player', ['getPlayStatus', 'getPlayMode', 'getShowStatus', 'getPlayList', 'getSong', 'getSongList', 'getVolume', 'getPlayingIndex']), 
 
-    ...mapGetters('user', ['getFavoriteList', 'getPlayedHistory', 'getSearchHistory']), 
+    ...mapGetters('user', ['getFavoriteList', 'getPlayedHistory', 'getSearchHistory']),
 
     buttonPlayClass () {
-      return 
     }
   },
-  
+ 
   methods: {
     onButtonPrev () {
 
@@ -140,18 +138,13 @@ export default {
     }),
 
     // audio api
-    audioCanPlay() {
-      return
+    audioCanPlay () {
     },
-
-    audioError() {
-      return
+    audioError () {
     },
-    audioEnded() {
-      return
+    audioEnded () {
     },
-    audioTimeupdate() {
-      return
+    audioTimeupdate () {
     }
   }
 }
@@ -163,14 +156,14 @@ export default {
   .player-container {
     display: flex;
     align-items: center;
-    position: absolute;
+    justify-content: center;
+    position: fixed;
     width: 100%;
     height: 60px;
     bottom: 0;
     left: 0;
     background: $color-background-player;
     .player-mini {
-      margin-left: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
